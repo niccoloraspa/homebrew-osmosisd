@@ -5,11 +5,11 @@
 class OsmosisdTest < Formula
   desc "osmosisd binary to interact with the Osmosis network"
   homepage "https://gihub.com/osmosis-labs/osmosis"
-  version "20.0.0"
+  version "16.0.0"
 
   on_macos do
-    url "https://github.com/niccoloraspa/osmosis/releases/download/v20.0.0/osmosisd-20.0.0-darwin-all"
-    sha256 "15aac411abbc3552d6fddce98158e81bde44cbb7821ec154a52ea3535e75aab1"
+    url "https://github.com/niccoloraspa/osmosis/releases/download/v16.0.0/osmosisd-16.0.0-darwin-all"
+    sha256 "52ec505cf30577d6a34e03f348701aef74fa3ddd00cf80854b35d9bcc64b4fa4"
 
     def install
       bin.install 'osmosisd'
@@ -17,17 +17,17 @@ class OsmosisdTest < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/niccoloraspa/osmosis/releases/download/v20.0.0/osmosisd-20.0.0-linux-amd64"
-      sha256 "e6fa428e887d86708b9fd8ac3212d9e39befc804630a389dabb2ca034979adbb"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/niccoloraspa/osmosis/releases/download/v16.0.0/osmosisd-16.0.0-linux-arm64"
+      sha256 "6f16e7bdaaba118498e0ea262f540ea2e996e16718256d2194b9ed9385d7c41d"
 
       def install
         bin.install 'osmosisd'
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/niccoloraspa/osmosis/releases/download/v20.0.0/osmosisd-20.0.0-linux-arm64"
-      sha256 "1d277a31ca07f3f2b2347f7aa3d7821446b2da8a4fff2f4b94d4188aa2490b8a"
+    if Hardware::CPU.intel?
+      url "https://github.com/niccoloraspa/osmosis/releases/download/v16.0.0/osmosisd-16.0.0-linux-amd64"
+      sha256 "4b9329121cee800bab830a25106a8c68187b2967a31a43a403fe81335f945d56"
 
       def install
         bin.install 'osmosisd'
